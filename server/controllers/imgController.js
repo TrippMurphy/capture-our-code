@@ -17,14 +17,26 @@ const imgController = {};
 // };
 
 imgController.processImg = (req, res, next) => {
-      tesseract.recognize(req.files.image.data, 'eng')
-        .then((data) => {
-          fs.writeFile(path.resolve(__dirname, '../result.txt'), data.data.text);
-          next();
-      }).catch(err => next({
-              log: 'Error occured in imgController.processImg, image was not successfully processed' + JSON.stringify(err), 
-              status: 500,
-              message: {err: 'imgController.processImg: ERROR: Check server logs for details'}
-            }));
-};
-module.exports = imgController;
+  tesseract.recognize(req.files.image.data, 'eng')
+    .then((data) => {
+      fs.writeFile(path.resolve(__dirname, '../result.txt'), data.data.text)
+      .then(() => {
+        res.locals.writeFileName = req.body['output-file-name'];
+        return next();
+      })
+      .catch(err => next({
+        log: 'Error occured in imgController.processImg, image was not successfully processed' + JSON.stringify(err), 
+          status: 500,
+          message: {err: 'imgController.processImg: ERROR: Check server logs for details'}
+        }));
+    })
+    .catch(err => next({
+      log: 'Error occured in imgController.processImg, image was not successfully processed' + JSON.stringify(err), 
+      status: 500,
+      message: {err: 'imgController.processImg: ERROR: Check server logs for details'}
+    }));
+}
+
+
+
+  module.exports = imgController;

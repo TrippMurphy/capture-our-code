@@ -1,26 +1,38 @@
-Eat
-0 BinarySearchTree.prototype.add = function or
+Js Js Js partitionData.js xX Js y Js vee
 
-1 // Create a new BinarySearchTree node with tl iven 'value'
+Js partitionData.js > ...
+il MA Examples of Array in JSON Tr i
+2 V7 '[1,"two",null, true] at
+3 re
 
-2 const leaf = new BinarySearchTree (Vall); I
+man
+4 // Example of Object in JSON ro
+5 // ‘{"a":1,"b":"two"}' =
+6 j=
+7 const partitionData = (string) => {
+8 const bracketDict = { '{': '}', '[': '1' };
+®e 9 const bracketStack = [];
 
-ES
+10 const chunks = [];
 
-4 //check if Value is greater or less than this.value (the root)
+(il let currChunk = '';
 
-5 if (Valle > this.value) {
+12
 
-6 //if right is null, add the new leaf, otherwise, call the add method on the right leaf
-7 // ternary operator: condition ? true : false
+13 // Loop through the string (minus initial brackets)
 
-8 this.right === null ? (this.right = leaf) : this.right.add (Valle);
+14 for (let i = 1; i < string.length - 1; i++) {
 
-9 } else {
+15 // If a string is found - add to chunk until string resolves
 
-0 //if left is null, add the new leaf, otherwise, call the add method on the left leaf
-1 this. left === null ? (this.left = leaf) : this.left.add (Valle);
+16 if (string[i] === '"') {
 
-2 }
+1174 currChunk += string[i++];
 
-3};
+e 18 while (string[i] !== '"' && string[i - 1] !== "\\') {
+
+19 | currChunk += string [i++];
+
+20 }
+
+21 }
