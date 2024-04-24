@@ -1,0 +1,26 @@
+Eat
+0 BinarySearchTree.prototype.add = function or
+
+1 // Create a new BinarySearchTree node with tl iven 'value'
+
+2 const leaf = new BinarySearchTree (Vall); I
+
+ES
+
+4 //check if Value is greater or less than this.value (the root)
+
+5 if (Valle > this.value) {
+
+6 //if right is null, add the new leaf, otherwise, call the add method on the right leaf
+7 // ternary operator: condition ? true : false
+
+8 this.right === null ? (this.right = leaf) : this.right.add (Valle);
+
+9 } else {
+
+0 //if left is null, add the new leaf, otherwise, call the add method on the left leaf
+1 this. left === null ? (this.left = leaf) : this.left.add (Valle);
+
+2 }
+
+3};
