@@ -1,5 +1,3 @@
-//one img
-//multiple imgs
 const tesseract = require('tesseract.js');
 const fs = require('fs/promises');
 const path = require('path');

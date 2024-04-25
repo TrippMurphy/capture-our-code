@@ -5,15 +5,19 @@ const app = express();
 const PORT = 3000;
 
 const uploadRouter = require('./routes/uploadRouter.js')
+const downloadRouter = require('./routes/downloadRouter.js')
+const clearRouter = require('./routes/clearRouter.js')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/upload', uploadRouter);
+app.use('/download', downloadRouter);
+app.use('/clear', clearRouter);
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/client.html'));
-});
+})
 app.get('/client.css', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/client.css'));
 });
@@ -30,12 +34,11 @@ app.get('/img-to-text.js', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../img-to-text/img-to-text.js'));
 });
 
-
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
-    message: { err: 'An error occurred' }, 
+    message: { err: 'An error occurred' },
   };
   const errorObj = Object.assign(defaultErr, err);
 
@@ -45,7 +48,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`);
+  console.log(`Example app listening on port ${PORT}`);
 });
 
 module.exports = app;
